@@ -4,7 +4,7 @@ project(robochair)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED std_msgs roscpp)
+find_package(catkin REQUIRED std_msgs roscpp tf)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -78,7 +78,7 @@ find_package(catkin REQUIRED std_msgs roscpp)
 catkin_package(
   INCLUDE_DIRS include
 #  LIBRARIES robochair
-  CATKIN_DEPENDS std_msgs roscpp
+  CATKIN_DEPENDS std_msgs roscpp tf
 #  DEPENDS system_lib
 )
 

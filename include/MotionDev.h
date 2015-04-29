@@ -26,6 +26,7 @@
 
 
 #include <string>
+#include <ros/console.h>
 
 using namespace std;
 
