@@ -288,7 +288,7 @@ bool MotionDev::getPose(Pose* pose){
      && comm == 13) {
     pose->setX((double)px);
     pose->setY((double)py);
-    pose->setTh((double)(pth)/1000);
+    pose->setTh((double)(pth)/1000.0);
     return true;
   }
   return false;

@@ -35,7 +35,7 @@ class Pose{
 public:
   void setX(double x){x_=x;}
   void setY(double y){y_=y;}
-  void setTh(double x){x_=x;}
+  void setTh(double th){th_=th;}
   double getX(){return x_;}
   double getY(){return y_;}
   double getTh(){return th_;}

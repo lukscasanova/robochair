@@ -1,11 +1,27 @@
 <launch>
-  <param name="arduino_address" value="192.168.0.10" type="string"/>
-  <param name="arduino_port" value="5060" type="int"/>
-  <param name="odom_topic" value="odom"/>
-  <param name="cmd_vel_topic" value="cmd_vel"/>
-  <node type="robochair_node" pkg="robochair" name="robochair" output="screen"/>
-  <include file="$(find joy2twist)/launch/joy2twist.launch"/>
+  <rosparam file="$(find robochair)/config/params.yaml" command="load" />
+  <arg name="use_keyboard" default="true" />
+  
+  <node type="velocity_controller_node" pkg="robochair" name="velocity_controller_node" respawn="true" output="screen"/>
+  <node type="odom_publisher_node" pkg="robochair" name="odom_publisher_node" output="screen"/>
+  
+  <!-- TELEOP MODES Joystick or Keyboard in Terminal /-->
+  <group unless="$(arg use_keyboard)">
+    <include file="$(find joy2twist)/launch/joy2twist.launch"/>
+  </group>
+  
+  <!-- SICK TIM /-->
   <include file="$(find robochair)/launch/sick_tim551_2050001.launch" />
-  <include file="$(find robochair)/launch/mapping_default.launch"/>
+  
+  <!-- SLAM ALGORITHM - CHOOSE ONE/-->
+  <!--include file="$(find robochair)/launch/mapping_default.launch"/-->
+  
+<!--   <include file="$(find robochair)/launch/gmapping.launch" /> -->
+  <include file="$(find robochair)/launch/amcl_diff.launch" />
+  
+  
+  
+  <!-- RVIZ FOR VISUALIZATION /-->
   <node type="rqt_rviz" pkg="rqt_rviz" name="rqt_rviz_node" />
+
 </launch>

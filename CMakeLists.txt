@@ -96,14 +96,19 @@ include_directories(include)
 # )
 
 ## Declare a cpp executable
-add_executable(robochair_node src/ChairController.cpp src/MotionDev.cpp)
+add_executable(odom_publisher_node src/OdomPublisher.cpp src/MotionDev.cpp)
+add_executable(velocity_controller_node src/VelocityController.cpp src/MotionDev.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
 # add_dependencies(robochair_node robochair_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(robochair_node
+target_link_libraries(velocity_controller_node
+   ${catkin_LIBRARIES}
+ )
+ 
+target_link_libraries(odom_publisher_node
    ${catkin_LIBRARIES}
  )
 

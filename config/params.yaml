@@ -1,0 +1,14 @@
+arduino_address: 192.168.0.10 
+arduino_port: 5060
+
+odom_frame: odom
+odom_topic: odom
+odom_rate: 10.0
+
+cmd_vel_topic: cmd_vel
+map_frame: map
+chair_frame: base_footprint
+base_frame: base_footprint
+
+linear_velocity_scale: 0.15
+angular_velocity_scale: 0.01
