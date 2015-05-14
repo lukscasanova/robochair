@@ -1,27 +1,49 @@
 <launch>
   <rosparam file="$(find robochair)/config/params.yaml" command="load" />
   <arg name="use_keyboard" default="true" />
+  <arg name="debug" default="true" />
+  <arg name="localization" default="false" />
+  <arg name="slam" default="true" />
+  <arg name="gmapping" default="false" />
   
-  <node type="velocity_controller_node" pkg="robochair" name="velocity_controller_node" respawn="true" output="screen"/>
-  <node type="odom_publisher_node" pkg="robochair" name="odom_publisher_node" output="screen"/>
+  <node type="velocity_controller_node" pkg="robochair" name="velocity_controller_node" respawn="true" />
+  <node type="odom_publisher_node" pkg="robochair" name="odom_publisher_node" />
+  <!-- SICK TIM /-->
+  <include file="$(find robochair)/launch/sick_tim551_2050001.launch" />
+  
   
   <!-- TELEOP MODES Joystick or Keyboard in Terminal /-->
   <group unless="$(arg use_keyboard)">
     <include file="$(find joy2twist)/launch/joy2twist.launch"/>
   </group>
   
-  <!-- SICK TIM /-->
-  <include file="$(find robochair)/launch/sick_tim551_2050001.launch" />
   
   <!-- SLAM ALGORITHM - CHOOSE ONE/-->
-  <!--include file="$(find robochair)/launch/mapping_default.launch"/-->
+  <group if="$(arg slam)" >
+    <group unless="$(arg gmapping)">
+  <!-- 	Hector Slam, laserscan only -->
+    <include file="$(find robochair)/launch/mapping_default.launch"/>
+    </group>
+    <group if="$(arg gmapping)" >
+  <!-- Gmapping Slam -->
+    <include file="$(find robochair)/launch/gmapping.launch" />
+    </group>
+  </group>
   
-<!--   <include file="$(find robochair)/launch/gmapping.launch" /> -->
-  <include file="$(find robochair)/launch/amcl_diff.launch" />
   
+  <!--Localization Tools -->
+  <group if="$(arg localization)" >
+    <!-- Run the map server -->
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find robochair)/config/map.yaml"/>
+    <!--- Run AMCL -->
+    <include file="$(find robochair)/launch/amcl_diff.launch" />
+  </group>
   
-  
-  <!-- RVIZ FOR VISUALIZATION /-->
-  <node type="rqt_rviz" pkg="rqt_rviz" name="rqt_rviz_node" />
-
+  <!-- Debug Tools -->
+  <group if="$(arg debug)">
+    <!--  Register Trajectories  -->
+    <include file="$(find robochair)/launch/geotiff_mapper.launch"/>
+    <!-- RVIZ FOR VISUALIZATION /-->
+    <node type="rqt_rviz" pkg="rqt_rviz" name="rqt_rviz_node" />
+  </group>
 </launch>

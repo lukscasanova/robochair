@@ -50,7 +50,7 @@ void VelocityController::joy_cb(const sensor_msgs::Joy::ConstPtr& joy){
 
 
 void VelocityController::vel_cb(const geometry_msgs::Twist::ConstPtr& vel){
-  if( (linvel_==vel->linear.x*1000.0) && (rotvel_==vel->angular.z*1000.0) )return;
+  //if( (linvel_==vel->linear.x*1000.0) && (rotvel_==vel->angular.z*1000.0) )return;
   linvel_=vel->linear.x*1000.0*lin_scale;
   rotvel_=vel->angular.z*1000.0*rot_scale;
   //md->setVel2(linvel_+rotvel_*radius/2.0, linvel_+rotvel_*radius/2.0));
