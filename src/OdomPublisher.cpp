@@ -4,6 +4,7 @@
 #include <nav_msgs/Odometry.h>
 #include <tf/transform_broadcaster.h>
 #define __PI__ 3.1415
+#define RAD_TO_DEG 180.0/__PI__
 
 class OdomPublisher{
 private:
@@ -13,7 +14,7 @@ private:
   std::string odom_frame, chair_frame;
 public:
   OdomPublisher();  
-  const double RAD_TO_DEG = 180.0/__PI__;
+  //const double RAD_TO_DEG = 180.0/__PI__;
   void run();
   void pubOdom();
   
