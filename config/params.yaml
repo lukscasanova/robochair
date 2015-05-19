@@ -12,7 +12,8 @@ base_frame: base_footprint
 
 linear_velocity_scale: 1.0
 angular_velocity_scale: 1.0
-radius: 30.0
+#empirically determined
+radius: 3.0
 
 hector_trajectory_server:
 

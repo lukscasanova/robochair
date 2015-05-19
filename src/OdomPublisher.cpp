@@ -62,7 +62,7 @@ void OdomPublisher::pubOdom(){
   md->getVel(&linVel);
   ROS_INFO("Got Vel");
   odom.twist.twist.linear.x=linVel/1000.0;
-  odom.twist.twist.linear.y=20.0;
+  odom.twist.twist.linear.y=0.0;
   odom.twist.twist.linear.z=0.0;
   odom.twist.twist.angular.x=0.0;
   odom.twist.twist.angular.y=0.0;
