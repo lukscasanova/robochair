@@ -7,7 +7,7 @@
   <arg name="gmapping" default="false" />
 
   <!-- Core nodes (Vel and Odom) executes remotely, in the chair" -->
-  <include file="$(find robochair)/launch/robochair_remote_core.launch" />
+  <include file="$(find robochair)/launch/robochair_core.launch" />
   
   
   <!-- TELEOP MODES Joystick or Keyboard in Terminal /-->

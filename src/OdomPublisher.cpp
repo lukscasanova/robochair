@@ -52,11 +52,11 @@ void OdomPublisher::pubOdom(){
   odom.header.stamp= ros::Time::now();
   odom.header.frame_id=odom_frame;
   odom.child_frame_id=chair_frame;
-  odom.pose.pose.position.x=pose.getX()/1000.0;
-  odom.pose.pose.position.y=pose.getY()/1000.0;
+  odom.pose.pose.position.x=pose.getY()/1000.0;
+  odom.pose.pose.position.y=pose.getX()/1000.0;
   odom.pose.pose.position.z=0.0;//TEMPORARY
   //ROS_INFO_STREAM("Theta: "<< pose.getTh());
-  odom.pose.pose.orientation = tf::createQuaternionMsgFromYaw(pose.getTh()*1/RAD_TO_DEG);
+  odom.pose.pose.orientation = tf::createQuaternionMsgFromYaw(-pose.getTh()*1/RAD_TO_DEG);
   double linVel, rotVel;
  // ROS_INFO_STREAM("GET VEL= " << 
   md->getVel(&linVel);
