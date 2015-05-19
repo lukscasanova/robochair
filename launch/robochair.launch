@@ -1,13 +1,15 @@
 <launch>
   <rosparam file="$(find robochair)/config/params.yaml" command="load" />
-  <arg name="use_keyboard" default="true" />
+  <include file="$(find robochair)/config/robochair.machine"/>
+  <arg name="use_keyboard" default="false" />
   <arg name="debug" default="true" />
   <arg name="localization" default="false" />
   <arg name="slam" default="true" />
   <arg name="gmapping" default="false" />
   
-  <node type="velocity_controller_node" pkg="robochair" name="velocity_controller_node" respawn="true" />
-  <node type="odom_publisher_node" pkg="robochair" name="odom_publisher_node" />
+  
+  <node type="velocity_controller_node" pkg="robochair" name="velocity_controller_node" respawn="true" machine="raspberrypi"/>
+  <node type="odom_publisher_node" pkg="robochair" name="odom_publisher_node" machine="raspberrypi"/>
   <!-- SICK TIM /-->
   <include file="$(find robochair)/launch/sick_tim551_2050001.launch" />
   

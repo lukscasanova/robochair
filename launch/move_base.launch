@@ -2,7 +2,9 @@
 
 <launch>
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+<!--    <param name="base_global_planner" value="global_planner/GlobalPlanner"/> -->
 <!--    <param name="base_global_planner" value="astar_planner/AStarPlanner"/>-->
+    
     <rosparam file="$(find robochair)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
     <rosparam file="$(find robochair)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
     <rosparam file="$(find robochair)/config/move_base.yaml" command="load" />

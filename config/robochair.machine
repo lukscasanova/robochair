@@ -1,0 +1,3 @@
+<launch>
+  <machine name="raspberrypi" address="raspberrypi" user="pi" password="raspberry" />
+</launch>

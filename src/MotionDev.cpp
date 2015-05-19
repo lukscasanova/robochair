@@ -243,9 +243,14 @@ bool MotionDev::getVel2(double* velLeft, double* velRight) {
   const char* request = "11 0 0 0 0 0";
   char reply[256];
   int comm;
+  long int vl, vr;
   if(! sendMessage(request, reply)) return false;
-  if(sscanf(reply, "%d %ld %ld", &comm, (long*)velLeft, (long*)velRight) == 3 && 
-     comm == 11) return true;
+  if(sscanf(reply, "%d %ld %ld", &comm, &vl, &vr) == 3 && 
+     comm == 11) {
+    *velLeft = (double) vl;
+    *velRight = (double) vr;
+    return true;
+  }
   return false;
 }
 
