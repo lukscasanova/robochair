@@ -10,8 +10,8 @@ map_frame: map
 chair_frame: base_footprint
 base_frame: base_footprint
 
-linear_velocity_scale: 0.25
-angular_velocity_scale: 0.02
+linear_velocity_scale: 1.0
+angular_velocity_scale: 1.0
 radius: 30.0
 
 hector_trajectory_server:
