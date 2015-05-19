@@ -5,7 +5,8 @@
 #include <sensor_msgs/Joy.h>
 
 #define __PI__ 3.1415
-#define RAD_TO_DEG 180.0/__PI__
+const double RAD_TO_DEG=180.0/__PI__;
+
 class VelocityController{
 private:
   MotionDev *md;
