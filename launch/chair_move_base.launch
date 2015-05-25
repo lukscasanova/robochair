@@ -1,9 +1,8 @@
 <launch>
   
   <include file="$(find robochair)/launch/robochair.launch">
-    <arg name="localization" value="true" />
     <arg name="slam" value="false"/>
     <arg name="use_keyboard" value="true"/>
   </include>
-  <include file="$(find robochair)/launch/move_base.launch" output="screen"/>
+  <include file="$(find robochair)/launch/move_base.launch"/>
 </launch>

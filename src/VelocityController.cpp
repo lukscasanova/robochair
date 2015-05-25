@@ -56,10 +56,12 @@ void VelocityController::joy_cb(const sensor_msgs::Joy::ConstPtr& joy){
 void VelocityController::vel_cb(const geometry_msgs::Twist::ConstPtr& vel){
   //if( (linvel_==vel->linear.x*1000.0) && (rotvel_==vel->angular.z*1000.0) )return;
   linvel_=vel->linear.x*1000.0*lin_scale;
-  rotvel_=vel->angular.z*1000.0*rot_scale;
-  md->setVel2(linvel_-rotvel_*radius, linvel_+rotvel_*radius);
+  rotvel_=vel->angular.z*RAD_TO_DEG;
+//   md->setVel2(linvel_-rotvel_*radius, linvel_+rotvel_*radius);
+   md->setVel(linvel_);
+   md->setRotVel(rotvel_);
   //ROS_INFO_STREAM("SET VEL = " << md->setVel(linvel_));
-  //ROS_INFO_STREAM("SET ROT VEL= " << md->setRotVel(rotvel_));
+  //ROS_INFO_STREAM("SET ROT VEL= " << );
   
 }
 int main (int argc, char ** argv){

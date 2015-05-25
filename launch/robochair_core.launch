@@ -2,5 +2,5 @@
  <rosparam file="$(find robochair)/config/params.yaml" command="load" />
  <node type="velocity_controller_node" pkg="robochair" name="velocity_controller_node" output="screen" respawn="true" />
  <node type="odom_publisher_node" pkg="robochair" name="odom_publisher_node" />
- <include file="$(find robochair)/launch/sick_tim551_2050001.launch" />
+ <!--include file="$(find robochair)/launch/sick_tim551_2050001.launch" /-->
 </launch>

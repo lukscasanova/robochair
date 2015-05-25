@@ -11,10 +11,16 @@ chair_frame: base_footprint
 base_frame: base_footprint
 
 linear_velocity_scale: 1.0
-angular_velocity_scale: 1.0
+angular_velocity_scale: 0.01
 #empirically determined
-radius: 3.0
+radius: 30.0
 
 hector_trajectory_server:
 
   source_frame_name: base_footprint
+  
+amcl:
+
+  initial_pose_x: -10000.0
+  initial_pose_y: -10000.0
+  

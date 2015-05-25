@@ -2,12 +2,11 @@
   <rosparam file="$(find robochair)/config/params.yaml" command="load" />
   <arg name="use_keyboard" default="false" />
   <arg name="debug" default="true" />
-  <arg name="localization" default="false" />
   <arg name="slam" default="true" />
   <arg name="gmapping" default="false" />
 
   <!-- Core nodes (Vel and Odom) executes remotely, in the chair" -->
-  <include file="$(find robochair)/launch/robochair_core.launch" />
+  <include file="$(find robochair)/launch/robochair_remote_core.launch" />
   
   
   <!-- TELEOP MODES Joystick or Keyboard in Terminal /-->
@@ -29,13 +28,7 @@
   </group>
   
   
-  <!--Localization Tools -->
-  <group if="$(arg localization)" >
-    <!-- Run the map server -->
-    <node name="map_server" pkg="map_server" type="map_server" args="$(find robochair)/config/map.yaml"/>
-    <!--- Run AMCL -->
-    <include file="$(find robochair)/launch/amcl_diff.launch" />
-  </group>
+
   
   <!-- Debug Tools -->
   <group if="$(arg debug)">
