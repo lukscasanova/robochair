@@ -69,9 +69,9 @@ void OdomPublisher::pubOdom(){
   odom.twist.twist.angular.x=0.0;
   odom.twist.twist.angular.y=0.0;
   md->getRotVel(&rotVel);
-  ROS_INFO("Right: %f, Left: %f, Rot: %f", velR, velL, (velR-velL)/(2000.0*radius));
+  //ROS_INFO("Right: %f, Left: %f, Rot: %f", velR, velL, (velR-velL)/(2000.0*radius));
   ROS_INFO("Got Rot Vel");
-  odom.twist.twist.angular.z=rotVel/RAD_TO_DEG;
+  odom.twist.twist.angular.z=(velR-velL)/(2000.0*radius);
   odom_pub.publish(odom);
   ROS_INFO("Published Odom");
   //ROS_INFO_STREAM_THROTTLE(3, "ODOM PUB");

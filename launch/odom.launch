@@ -1,4 +1,4 @@
 <launch>
   <rosparam file="$(find robochair)/config/params.yaml" command="load" />
-  <node type="odom_publisher_node" pkg="robochair" name="odom_publisher_node" output="screen"/>
+  <node type="odom_publisher_node" pkg="robochair" name="odom_publisher_node"/>
 </launch>

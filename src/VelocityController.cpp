@@ -65,7 +65,7 @@ void VelocityController::vel_cb(const geometry_msgs::Twist::ConstPtr& vel){
   
 }
 int main (int argc, char ** argv){
- ros::init(argc, argv, "robochair_vel");
+ ros::	init(argc, argv, "robochair_vel");
  VelocityController vc;
  ros::spin();
  return 0; 
