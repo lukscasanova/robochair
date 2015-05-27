@@ -58,19 +58,18 @@ void OdomPublisher::pubOdom(){
   odom.pose.pose.position.z=0.0;//TEMPORARY
   //ROS_INFO_STREAM("Theta: "<< pose.getTh());
   odom.pose.pose.orientation = tf::createQuaternionMsgFromYaw(pose.getTh()*1/RAD_TO_DEG);
+  double velR, velL;
   double linVel, rotVel;
  // ROS_INFO_STREAM("GET VEL= " << 
-  md->getVel(&linVel);
+  md->getVel2(&velL, &velR);
   ROS_INFO("Got Vel");
-  odom.twist.twist.linear.x=linVel/1000.0;
+  odom.twist.twist.linear.x=(velR+velL)/2000.0;
   odom.twist.twist.linear.y=0.0;
   odom.twist.twist.linear.z=0.0;
   odom.twist.twist.angular.x=0.0;
   odom.twist.twist.angular.y=0.0;
   md->getRotVel(&rotVel);
-  double velR, velL;
-  md->getVel2(&velL, &velR);
-  ROS_INFO("Right: %f, Left: %f, Rot: %f", velR, velL, (velR-velL)/(2*radius));
+  ROS_INFO("Right: %f, Left: %f, Rot: %f", velR, velL, (velR-velL)/(2000.0*radius));
   ROS_INFO("Got Rot Vel");
   odom.twist.twist.angular.z=rotVel/RAD_TO_DEG;
   odom_pub.publish(odom);
