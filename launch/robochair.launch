@@ -35,6 +35,6 @@
     <!--  Register Trajectories  -->
     <include file="$(find robochair)/launch/geotiff_mapper.launch"/>
     <!-- RVIZ FOR VISUALIZATION /-->
-    <node type="rqt_rviz" pkg="rqt_rviz" name="rqt_rviz_node" />
+    <node type="rviz" pkg="rviz" name="rqt_rviz_node" />
   </group>
 </launch>

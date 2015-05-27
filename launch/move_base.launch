@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
   
 <launch>
-  <node name="map_server" pkg="map_server" type="map_server" args="$(find tfc_pioneer)/map.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find robochair)/config/map.yaml"/>
   <include file="$(find robochair)/launch/amcl_diff.launch" />
 
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">

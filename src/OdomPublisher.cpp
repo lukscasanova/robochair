@@ -11,6 +11,7 @@ private:
   bool publish_tf;
   ros::Publisher odom_pub;
   std::string odom_frame, chair_frame;
+  double radius;
 public:
   OdomPublisher();  
   //const double RAD_TO_DEG = 180.0/__PI__;
@@ -30,7 +31,7 @@ OdomPublisher::OdomPublisher(){
  nh.param<std::string>("odom_topic", odom_topic, "odom");
  nh.param<std::string>("odom_frame", odom_frame, "odom");
  nh.param<std::string>("chair_frame", chair_frame, "base_footprint");
- 
+ nh.param<double>("radius", radius, 20.0);
  md = new MotionDev(arduino_address, arduino_port);
  
  std::string status;
@@ -67,6 +68,8 @@ void OdomPublisher::pubOdom(){
   odom.twist.twist.angular.x=0.0;
   odom.twist.twist.angular.y=0.0;
   md->getRotVel(&rotVel);
+  double velR, velL;
+  ROS_INFO("Right: %f, Left: %f, Rot: %f", velR, velL, (velR-velL)/(2*radius));
   ROS_INFO("Got Rot Vel");
   odom.twist.twist.angular.z=rotVel/RAD_TO_DEG;
   odom_pub.publish(odom);
