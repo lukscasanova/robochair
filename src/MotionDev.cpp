@@ -151,7 +151,7 @@ bool MotionDev::setVel(double vel) {
   if(strncmp(reply, "21 0", 3) == 0) return true;
   return false;
 }
-}
+
 
 
 // set linear speeds in each wheel

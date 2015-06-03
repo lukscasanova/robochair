@@ -1,7 +1,7 @@
 <launch>
  <rosparam file="$(find robochair)/config/params.yaml" command="load" />
  <include file="$(find robochair)/config/robochair.machine"/>
- <node type="velocity_controller_node" pkg="robochair" name="velocity_controller_node" respawn="true" machine="raspberrypi"/>
+ <!--node type="velocity_controller_node" pkg="robochair" name="velocity_controller_node" respawn="true" machine="raspberrypi"/-->
  <node type="odom_publisher_node" pkg="robochair" name="odom_publisher_node" output="screen" machine="raspberrypi"/>
  <include file="$(find robochair)/launch/sick_tim551_2050001.launch"/>
 </launch>
