@@ -62,6 +62,8 @@ using namespace std;
 #define GETSTATUS 17
 #define RECOVER 18
 #define SETLIMITS 19
+#define GETACCEL 20
+#define SETVEL 21
 
 // send & reply
 bool MotionDev::sendMessage(const char* request, char* reply) {
