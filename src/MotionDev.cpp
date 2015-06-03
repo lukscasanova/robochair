@@ -144,7 +144,13 @@ bool MotionDev::stop() {
 
 // set a linear speed
 bool MotionDev::setVel(double vel) {
-  return setVel2(vel, vel);
+  char request[256];
+  char reply[256];
+  sprintf(request, "21 %ld 0 0 0 0", (long)vel);
+  if(! sendMessage(request, reply)) return false;
+  if(strncmp(reply, "21 0", 3) == 0) return true;
+  return false;
+}
 }
 
 
