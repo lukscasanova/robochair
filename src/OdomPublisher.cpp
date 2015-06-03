@@ -56,7 +56,7 @@ void OdomPublisher::pubOdom(){
   odom.pose.pose.position.x=pose.getX()/1000.0;
   odom.pose.pose.position.y=pose.getY()/1000.0;
   odom.pose.pose.position.z=0.0;//TEMPORARY
-  //ROS_INFO_STREAM("Theta: "<< pose.getTh());
+  ROS_INFO_STREAM("Theta: "<< pose.getTh());
   odom.pose.pose.orientation = tf::createQuaternionMsgFromYaw(pose.getTh()*1/RAD_TO_DEG);
   double velR, velL;
   double linVel, rotVel;

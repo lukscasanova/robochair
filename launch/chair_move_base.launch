@@ -5,4 +5,5 @@
     <arg name="use_keyboard" value="true"/>
   </include>
   <include file="$(find robochair)/launch/move_base.launch"/>
+  <node type="rqt_plot" name="rqt_plot" pkg="rqt_plot"/>
 </launch>

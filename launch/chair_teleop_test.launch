@@ -1,0 +1,5 @@
+<launch>
+  <include file="$(find robochair)/launch/robochair_remote_core.launch"/>
+  <include file="$(find joy2twist)/launch/joy2twist.launch"/>
+  <node type="rqt_plot" name="rqt_plot" pkg="rqt_plot"/>
+</launch>
