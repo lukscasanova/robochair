@@ -6,8 +6,3 @@ global_costmap:
   static_map: true
   transform_tolerance: 1.0
   resolution: 0.05
-
-amcl:
-
-  initial_pose_x: -10000.0
-  initial_pose_y: -10000.0

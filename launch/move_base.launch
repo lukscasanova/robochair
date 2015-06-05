@@ -3,6 +3,8 @@
 <launch>
   <node name="map_server" pkg="map_server" type="map_server" args="$(find robochair)/config/map.yaml"/>
   <include file="$(find robochair)/launch/amcl_diff.launch" />
+<!--   <include file="$(find robochair)/launch/gmapping.launch" /> -->
+
 
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
 <!--    <param name="base_global_planner" value="astar_planner/AStarPlanner"/>-->
