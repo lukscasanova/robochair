@@ -1,0 +1,59 @@
+goal: 
+  target_pose: 
+    header: 
+      seq: 0
+      stamp: 
+        secs: 1434509032
+        nsecs: 632080674
+      frame_id: map
+    pose: 
+      position: 
+        x: 10.6005992889
+        y: -26.757850647
+        z: 0.0
+      orientation: 
+        x: 0.0
+        y: 0.0
+        z: 0.894310893517
+        w: -0.447446114898
+
+18.234, -14.513, 0.000]
+
+
+
+header: 
+  seq: 374
+  stamp: 
+    secs: 1434509107
+    nsecs: 433438000
+  frame_id: ''
+status: 
+  goal_id: 
+    stamp: 
+      secs: 1434509032
+      nsecs: 632906438
+    id: /move_base-1-1434509032.632906438
+  status: 1
+  text: This goal has been accepted by the simple action server
+feedback: 
+  base_position: 
+    header: 
+      seq: 0
+      stamp: 
+        secs: 1434509107
+        nsecs: 400449378
+      frame_id: map
+    pose: 
+      position: 
+        x: 10.7081329208
+        y: -26.5741370397
+        z: 0.0
+      orientation: 
+        x: 0.0
+        y: 0.0
+        z: 0.881101307413
+        w: -0.472927569587
+
+time_elapsed: 74.800531562
+distance: 14.2165
+

@@ -1,0 +1,7 @@
+<launch>
+  <include file="$(find robochair)/launch/robochair.launch">
+    <arg name="use_joystick" value="true"/>
+    <arg name="slam" value="true"/>
+    <arg name="gmapping" value="true" />
+  </include>
+</launch>

@@ -5,33 +5,25 @@
   <arg name="slam" default="false" />
   <arg name="gmapping" default="false" />
   <arg name="move_base" default="false" />
-  <arg name="localization" default="false"/>
-  
   <!-- Core nodes (Vel and Odom) executes remotely, in the chair" -->
   <group ns="robochair">
-  	<!--include file="$(find robochair)/launch/robochair_remote_core.launch" /-->
+  	<include file="$(find robochair)/launch/robochair_remote_core.launch" />
   </group>
-  
   <!-- Ativar Joystick /-->
   <group if="$(arg use_joystick)">
     <include file="$(find joy2twist)/launch/joy2twist.launch"/>
   </group>
-  
   <!-- Escolha do algoritmo de SLAM/-->
   <group if="$(arg slam)" >
-  
     <group unless="$(arg gmapping)">
     <!-- 	Hector Slam, laserscan only -->
     <include file="$(find robochair)/launch/mapping_default.launch"/>
     </group>
-    
     <group if="$(arg gmapping)" > 
     <!-- Gmapping Slam -->
     <include file="$(find robochair)/launch/gmapping.launch" />
     </group>
-    
   </group>
-  
   <!-- Algoritmo de Localização, apenas quando não estiver usando SLAM -->
   <group unless="$(arg slam)">
     <group if="$(arg localization)">
@@ -39,12 +31,10 @@
       <include file="$(find robochair)/launch/amcl_diff.launch" />
     </group>
   </group>
-  
   <!-- MOVE_BASE - Navegação Autônoma -->
   <group if="$(arg move_base)">
     <include file="$(find robochair)/launch/move_base.launch"/>
   </group>
-  
   <!-- Ferramentas para debug  -->
   <group if="$(arg debug)">
     <!--  Registrar Trajetórias  -->

@@ -1,0 +1,6 @@
+<launch>
+  <include file="$(find robochair)/launch/robochair.launch">
+    <arg name="localization" value="true"/>
+    <arg name="move_base" value="true"/>
+  </include>
+</launch>
